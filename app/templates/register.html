@@ -1,10 +1,11 @@
 {% extends "base.html" %}
+{% import 'bootstrap_wtf.html' as wtf %}
 
 {% block content %}
-    <h1>
-        Register
-    </h1>
-    <form action="" method="post">
+    <h1>{{ _('Register') }}</h1>
+
+    <!-- originally forms should be like this -->
+    <!-- <form action="" method="post">
         {{ form.hidden_tag() }}
         <p>
             {{ form.username.label }}<br>
@@ -44,5 +45,8 @@
         <p>
             {{ form.submit() }}
         </p>
-    </form>
+    </form> -->
+
+    <!-- to make it cleaner and easier bootstrap_wtf.html was used -->
+    {{ wtf.quick_form(form) }} 
 {% endblock %}

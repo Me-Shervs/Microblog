@@ -1,19 +1,4 @@
-2026-02-11 17:26:50,394 ERROR: Exception on /index [GET] [in C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\flask\app.py:875]
-Traceback (most recent call last):
-  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1967, in _exec_single_context
-    self.dialect.do_execute(
-    ~~~~~~~~~~~~~~~~~~~~~~~^
-        cursor, str_statement, effective_parameters, context
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\sqlalchemy\engine\default.py", line 952, in do_execute
-    cursor.execute(statement, parameters)
-    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
-sqlite3.OperationalError: no such column: post.timestamp
-
-The above exception was the direct cause of the following exception:
-
+2026-02-18 12:56:50,589 ERROR: Exception on /edit_profile [GET] [in C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\flask\app.py:875]
 Traceback (most recent call last):
   File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
     response = self.full_dispatch_request()
@@ -27,113 +12,8 @@ Traceback (most recent call last):
   File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\flask_login\utils.py", line 290, in decorated_view
     return current_app.ensure_sync(func)(*args, **kwargs)
            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
-  File "C:\Users\sherv\Downloads\microblog\app\routes.py", line 26, in index
-    posts = db.session.scalars(current_user.following_posts()).all()
-            ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\sqlalchemy\orm\scoping.py", line 1891, in scalars
-    return self._proxied.scalars(
-           ~~~~~~~~~~~~~~~~~~~~~^
-        statement,
-        ^^^^^^^^^^
-    ...<3 lines>...
-        **kw,
-        ^^^^^
-    )
-    ^
-  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\sqlalchemy\orm\session.py", line 2459, in scalars
-    return self._execute_internal(
-           ~~~~~~~~~~~~~~~~~~~~~~^
-        statement,
-        ^^^^^^^^^^
-    ...<4 lines>...
-        **kw,
-        ^^^^^
-    ).scalars()
-    ^
-  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\sqlalchemy\orm\session.py", line 2249, in _execute_internal
-    result: Result[Any] = compile_state_cls.orm_execute_statement(
-                          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
-        self,
-        ^^^^^
-    ...<4 lines>...
-        conn,
-        ^^^^^
-    )
-    ^
-  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\sqlalchemy\orm\context.py", line 306, in orm_execute_statement
-    result = conn.execute(
-        statement, params or {}, execution_options=execution_options
-    )
-  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1419, in execute
-    return meth(
-        self,
-        distilled_parameters,
-        execution_options or NO_OPTIONS,
-    )
-  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\sqlalchemy\sql\elements.py", line 527, in _execute_on_connection
-    return connection._execute_clauseelement(
-           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
-        self, distilled_params, execution_options
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1641, in _execute_clauseelement
-    ret = self._execute_context(
-        dialect,
-    ...<8 lines>...
-        cache_hit=cache_hit,
-    )
-  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1846, in _execute_context
-    return self._exec_single_context(
-           ~~~~~~~~~~~~~~~~~~~~~~~~~^
-        dialect, context, statement, parameters
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1986, in _exec_single_context
-    self._handle_dbapi_exception(
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
-        e, str_statement, effective_parameters, cursor, context
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 2363, in _handle_dbapi_exception
-    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
-  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1967, in _exec_single_context
-    self.dialect.do_execute(
-    ~~~~~~~~~~~~~~~~~~~~~~~^
-        cursor, str_statement, effective_parameters, context
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\sqlalchemy\engine\default.py", line 952, in do_execute
-    cursor.execute(statement, parameters)
-    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
-sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such column: post.timestamp
-[SQL: SELECT post.id, post.body, post.timestamp, post.user_id 
-FROM post JOIN user AS user_1 ON user_1.id = post.user_id LEFT OUTER JOIN (followers AS followers_1 JOIN user AS user_2 ON followers_1.follower_id = user_2.id) ON followers_1.followed_id = user_1.id 
-WHERE user_2.id = ? OR user_1.id = ? GROUP BY post.id, post.body, post.timestamp, post.user_id ORDER BY post.timestamp DESC]
-[parameters: (2, 2)]
-(Background on this error at: https://sqlalche.me/e/20/e3q8)
-2026-02-11 17:30:38,171 INFO: Microblog  startup [in C:\Users\sherv\Downloads\microblog\app\__init__.py:46]
-2026-02-11 17:30:46,339 INFO: Microblog  startup [in C:\Users\sherv\Downloads\microblog\app\__init__.py:46]
-2026-02-11 17:30:59,383 INFO: Microblog  startup [in C:\Users\sherv\Downloads\microblog\app\__init__.py:46]
-2026-02-11 17:31:02,792 ERROR: Exception on /index [GET] [in C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\flask\app.py:875]
-Traceback (most recent call last):
-  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
-    response = self.full_dispatch_request()
-  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\flask\app.py", line 902, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
-           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
-  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\flask_login\utils.py", line 290, in decorated_view
-    return current_app.ensure_sync(func)(*args, **kwargs)
-           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
-  File "C:\Users\sherv\Downloads\microblog\app\routes.py", line 27, in index
-    return  render_template('index.html', title='Home Page', form=form, posts= posts)
+  File "C:\Users\sherv\Downloads\microblog\app\routes.py", line 108, in edit_profile
+    return render_template('edit_profile.html', title='Edit Profile', form=form)
   File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\flask\templating.py", line 149, in render_template
     template = app.jinja_env.get_or_select_template(template_name_or_list)
   File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\jinja2\environment.py", line 1087, in get_or_select_template
@@ -151,6 +31,96 @@ Traceback (most recent call last):
     ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
   File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\jinja2\environment.py", line 942, in handle_exception
     raise rewrite_traceback_stack(source=source)
-  File "C:\Users\sherv\Downloads\microblog\app\templates\index.html", line 23, in template
-    {% endfor %}
-jinja2.exceptions.TemplateSyntaxError: Encountered unknown tag 'endfor'. Jinja was looking for the following tags: 'endblock'. The innermost block that needs to be closed is 'block'.
+  File "C:\Users\sherv\Downloads\microblog\app\templates\edit_profile.html", line 2, in template
+    {% import 'bootstrap_wtf.html as wtf %}
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+jinja2.exceptions.TemplateSyntaxError: unexpected char "'" at 36
+2026-02-18 12:57:22,009 INFO: Microblog  startup [in C:\Users\sherv\Downloads\microblog\app\__init__.py:48]
+2026-02-18 13:03:40,064 INFO: Microblog  startup [in C:\Users\sherv\Downloads\microblog\app\__init__.py:48]
+2026-02-18 13:36:38,754 INFO: Microblog  startup [in C:\Users\sherv\Downloads\microblog\app\__init__.py:50]
+2026-02-18 14:51:47,098 INFO: Microblog  startup [in C:\Users\sherv\Downloads\microblog\app\__init__.py:54]
+2026-02-18 14:51:49,400 ERROR: Exception on /index [GET] [in C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\flask\app.py:875]
+Traceback (most recent call last):
+  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\flask_login\utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\sherv\Downloads\microblog\app\routes.py", line 32, in index
+    return render_template('index.html', title='Home', form=form, posts=posts.items, next_url=next_url, prev_url=prev_url)
+  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\flask\templating.py", line 150, in render_template
+    return _render(app, template, context)
+  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\flask\templating.py", line 131, in _render
+    rv = template.render(context)
+  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\jinja2\environment.py", line 1295, in render
+    self.environment.handle_exception()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "C:\Users\sherv\Downloads\microblog\app\templates\index.html", line 2, in top-level template code
+    {% import 'bootstrap_wtf.html' as wtf %}
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sherv\Downloads\microblog\app\templates\base.html", line 58, in top-level template code
+    {% block content %}{% endblock %}
+    ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sherv\Downloads\microblog\app\templates\index.html", line 9, in block 'content'
+    {{ wtf.quick_form(form) }}
+    ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\jinja2\runtime.py", line 784, in _invoke
+    rv = self._func(*arguments)
+  File "C:\Users\sherv\Downloads\microblog\app\templates\bootstrap_wtf.html", line 70, in template
+    {{ form_field(field, ns.first_field) }}
+    ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\jinja2\runtime.py", line 784, in _invoke
+    rv = self._func(*arguments)
+  File "C:\Users\sherv\Downloads\microblog\app\templates\bootstrap_wtf.html", line 25, in template
+    {{ field.label(class='form-label') }}
+    ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\wtforms\fields\core.py", line 444, in __call__
+    text = escape(text or self.text)
+  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\markupsafe\__init__.py", line 43, in escape
+    return Markup(s.__html__())
+                  ~~~~~~~~~~^^
+  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\flask_babel\speaklater.py", line 66, in __html__
+    return str(self)
+  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\flask_babel\speaklater.py", line 21, in __str__
+    return str(self._func(*self._args, **self._kwargs))
+               ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\flask_babel\__init__.py", line 756, in gettext
+    return get_domain().gettext(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\flask_babel\__init__.py", line 648, in gettext
+    t = self.get_translations()
+  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\flask_babel\__init__.py", line 609, in get_translations
+    locale = get_locale()
+  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\flask_babel\__init__.py", line 263, in get_locale
+    rv = babel.locale_selector()
+  File "C:\Users\sherv\Downloads\microblog\app\__init__.py", line 15, in get_locale
+    return request.accept_languages.bext_match(app.config['LANGUAGES'])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'LanguageAccept' object has no attribute 'bext_match'. Did you mean: 'best_match'?
+2026-02-18 14:52:17,862 INFO: Microblog  startup [in C:\Users\sherv\Downloads\microblog\app\__init__.py:54]
+2026-02-18 15:15:19,654 INFO: Microblog  startup [in C:\Users\sherv\Downloads\microblog\app\__init__.py:54]
+2026-02-18 15:17:29,167 INFO: Microblog  startup [in C:\Users\sherv\Downloads\microblog\app\__init__.py:54]
+2026-02-18 15:21:52,529 INFO: Microblog  startup [in C:\Users\sherv\Downloads\microblog\app\__init__.py:54]
+2026-02-18 19:27:24,916 INFO: Microblog  startup [in C:\Users\sherv\Downloads\microblog\app\__init__.py:54]
+2026-02-18 19:29:41,892 INFO: Microblog  startup [in C:\Users\sherv\Downloads\microblog\app\__init__.py:54]
+2026-02-18 19:36:12,184 INFO: Microblog  startup [in C:\Users\sherv\Downloads\microblog\app\__init__.py:54]
+2026-02-18 19:59:29,882 INFO: Microblog  startup [in C:\Users\sherv\Downloads\microblog\app\__init__.py:61]
+2026-02-18 20:01:29,884 INFO: Microblog  startup [in C:\Users\sherv\Downloads\microblog\app\__init__.py:61]
+2026-02-18 20:07:10,588 INFO: Microblog  startup [in C:\Users\sherv\Downloads\microblog\app\__init__.py:61]
+2026-02-18 20:10:34,326 INFO: Microblog  startup [in C:\Users\sherv\Downloads\microblog\app\__init__.py:61]
+2026-02-18 20:11:38,983 INFO: Microblog  startup [in C:\Users\sherv\Downloads\microblog\app\__init__.py:61]
+2026-02-18 20:11:59,376 INFO: Microblog  startup [in C:\Users\sherv\Downloads\microblog\app\__init__.py:61]
+2026-02-18 20:16:49,429 INFO: Microblog  startup [in C:\Users\sherv\Downloads\microblog\app\__init__.py:61]
+2026-02-18 20:18:33,695 INFO: Microblog  startup [in C:\Users\sherv\Downloads\microblog\app\__init__.py:61]
+2026-02-18 20:20:49,669 INFO: Microblog  startup [in C:\Users\sherv\Downloads\microblog\app\__init__.py:61]
+2026-02-18 20:34:29,054 INFO: Microblog  startup [in C:\Users\sherv\Downloads\microblog\app\__init__.py:61]
+2026-02-18 20:39:39,660 INFO: Microblog  startup [in C:\Users\sherv\Downloads\microblog\app\__init__.py:61]

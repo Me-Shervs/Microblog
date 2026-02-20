@@ -1,0 +1,219 @@
+# Filipino (Philippines) translations for PROJECT.
+# Copyright (C) 2026 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2026-02-18 20:30+0800\n"
+"PO-Revision-Date: 2026-02-18 19:14+0800\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: fil_PH\n"
+"Language-Team: fil_PH <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: app/email.py:16
+msgid "[Microblog] Reset Your Password"
+msgstr "[Microblog] I-reset ang Iyong Password"
+
+#: app/forms.py:11 app/forms.py:17 app/forms.py:38
+msgid "Username"
+msgstr "Username"
+
+#: app/forms.py:12 app/forms.py:19 app/forms.py:66
+msgid "Password"
+msgstr "Password"
+
+#: app/forms.py:13
+msgid "Remember Me"
+msgstr "Tandaan Ako"
+
+#: app/forms.py:14
+msgid "Sign In"
+msgstr "Mag-sign in"
+
+#: app/forms.py:18 app/forms.py:62
+msgid "Email"
+msgstr "Email"
+
+#: app/forms.py:20 app/forms.py:67
+msgid "Repeat Password"
+msgstr "Ulitin ang Password"
+
+#: app/forms.py:21
+msgid "Register"
+msgstr "Magrehistro"
+
+#: app/forms.py:28
+msgid "Please use a different username."
+msgstr "Mangyaring gumamit ng ibang username."
+
+#: app/forms.py:35
+msgid "Please use a different email address"
+msgstr "Mangyaring gumamit ng ibang email address."
+
+#: app/forms.py:39
+msgid "About me"
+msgstr "Tungkol sa akin"
+
+#: app/forms.py:40 app/forms.py:55 app/forms.py:59
+msgid "Submit"
+msgstr "Isumite"
+
+#: app/forms.py:52
+msgid "Please use a different username"
+msgstr "Mangyaring gumamit ng ibang username."
+
+#: app/forms.py:58
+msgid "Say something"
+msgstr "May gustong sabihin"
+
+#: app/forms.py:63 app/forms.py:68
+msgid "Request Password Reset"
+msgstr "Humiling ng Password Reset"
+
+#: app/routes.py:22
+msgid "Your post is now live!"
+msgstr "Live na ang iyong post!"
+
+#: app/routes.py:44
+msgid "Invalid username or password"
+msgstr "Maling username o password"
+
+#: app/routes.py:68
+msgid "Congratulations, you are now a registered user!"
+msgstr "Binabati kita, ikaw ay rehistradong user na!"
+
+#: app/routes.py:100
+msgid "Your changes have been saved."
+msgstr "Nai-save na ang iyong mga pagbabago."
+
+#: app/routes.py:118
+msgid "You cannot follow yourself!"
+msgstr "Hindi mo maaaring i-follow ang iyong sarili!"
+
+#: app/routes.py:122
+#, python-format
+msgid "You are following %(username)s!"
+msgstr "Fino-follow mo na si %(username)s!"
+
+#: app/routes.py:135
+#, python-format
+msgid "User %(username)s not found."
+msgstr "Hindi makita ang user na si %(username)s."
+
+#: app/routes.py:138
+msgid "You cannot unfollow yourself!"
+msgstr "Hindi mo maaaring i-unfollow ang iyong sarili!"
+
+#: app/routes.py:142
+#, python-format
+msgid "You are not following %(username)s"
+msgstr "Hindi mo fina-follow si %(username)s"
+
+#: app/routes.py:171
+msgid "Check your email for the instructions to reset your password"
+msgstr "Tingnan ang iyong email para sa mga tagubilin sa pag-reset ng password"
+
+#: app/routes.py:186
+msgid "Your password has been reset."
+msgstr "Na-reset na ang iyong password."
+
+#: app/templates/404.html:4
+msgid "404 Not Found."
+msgstr "404 Hindi Natagpuan."
+
+#: app/templates/_post.html:15
+#, python-format
+msgid "%(username)s said %(when)s"
+msgstr "Sinabi ni %(username)s %(when)s"
+
+#: app/templates/base.html:27
+msgid "Home"
+msgstr "Home"
+
+#: app/templates/base.html:30
+msgid "Explore"
+msgstr "Mag-explore"
+
+#: app/templates/base.html:36
+msgid "Login"
+msgstr "Mag-login"
+
+#: app/templates/base.html:43
+msgid "Logout"
+msgstr "Mag-logout"
+
+#: app/templates/edit_profile.html:5
+msgid "Profile"
+msgstr "Profile"
+
+#: app/templates/index.html:6
+#, fuzzy, python-format
+msgid "Hi, %(username)s!"
+msgstr "Username"
+
+#: app/templates/index.html:19 app/templates/user.html:45
+msgid "Newer Posts"
+msgstr "Mas Bagong Mga Post"
+
+#: app/templates/index.html:24 app/templates/user.html:48
+msgid "Older Posts"
+msgstr "Mas Lumang Mga Post"
+
+#: app/templates/login.html:9
+msgid "New User?"
+msgstr "Bagong User?"
+
+#: app/templates/login.html:9
+msgid "Click to Register!"
+msgstr "Magrehistro"
+
+#: app/templates/login.html:12
+msgid "Forgot Your Password?"
+msgstr "I-reset ang Iyong Password"
+
+#: app/templates/login.html:12
+msgid "Click to Reset It"
+msgstr "I-click para i-reset ito"
+
+
+#: app/templates/user.html:8
+msgid "User:"
+msgstr "User:"
+
+#: app/templates/user.html:13
+msgid "Last seen on:"
+msgstr "Huling nakita noong:"
+
+#: app/templates/user.html:16
+#, python-format
+msgid "%(count)d followers"
+msgstr "%(count)d tagasunod"
+
+#: app/templates/user.html:16
+#, python-format
+msgid "%(count)d following"
+msgstr "%(count)d fina-follow"
+
+#: app/templates/user.html:20
+msgid "Edit your profile"
+msgstr "I-edit ang iyong profile"
+
+#: app/templates/user.html:26
+msgid "Follow"
+msgstr "I-follow"
+
+#: app/templates/user.html:33
+msgid "unfollow"
+msgstr "I-unfollow"
+
+#~ msgid "New User?"
+#~ msgstr "Bagong User?"
+
