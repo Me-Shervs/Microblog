@@ -155,17 +155,28 @@ def send_message(recipient):
 @bp.route('/messages')
 @login_required
 def messages():
+    # reset unread count
     current_user.last_message_read_time = datetime.now(timezone.utc)
     current_user.add_notification('unread_message_count', 0)
     db.session.commit()
-    page = request.args.get('page', 1, type=int)
-    query = current_user.messages_received.select().order_by(Message.timestamp.desc())
-    messages = db.paginate(query, page=page, per_page=current_app.config['POSTS_PER_PAGE'], error_out=False)
-    next_url = url_for('main.messages', page=messages.next_num) \
-        if messages.has_next else None
-    prev_url = url_for('main.messages', page=messages.prev_num) \
-        if messages.has_prev else None
-    return render_template('messages.html', messages=messages.items, next_url=next_url, prev_url=prev_url)
+
+    # get distinct users you have exchanged messages with
+    users = db.session.scalars(
+        sa.select(User)
+        .join(Message, sa.or_(
+            Message.sender_id == User.id,
+            Message.recipient_id == User.id
+        ))
+        .where(
+            sa.or_(
+                Message.sender_id == current_user.id,
+                Message.recipient_id == current_user.id
+            )
+        )
+        .distinct()
+    ).all()
+
+    return render_template('messages.html', users=users)
 
 @bp.route('/notifications')
 @login_required
@@ -179,6 +190,35 @@ def notifications():
         'data': n.get_data(),
         'timestamp': n.timestamp
     } for n in notifications]
+
+@bp.route('/conversation/<username>', methods=['GET', 'POST'])
+@login_required
+def conversation(username):
+    user = db.first_or_404(sa.select(User).where(User.username == username))
+    form = MessageForm()
+
+    if form.validate_on_submit():
+        msg = Message(author=current_user, recipient=user, body=form.message.data)
+        user.add_notification('unread_message_count', user.unread_message_count())
+        db.session.add(msg)
+        db.session.commit()
+        return redirect(url_for('main.conversation', username=username))
+
+    # fetch both sent and received messages between the two users
+    messages = db.session.scalars(
+        sa.select(Message)
+        .where(
+            sa.or_(
+                sa.and_(Message.sender_id == current_user.id,
+                        Message.recipient_id == user.id),
+                sa.and_(Message.sender_id == user.id,
+                        Message.recipient_id == current_user.id)
+            )
+        )
+        .order_by(Message.timestamp.asc())
+    ).all()
+
+    return render_template('conversation.html', user=user, messages=messages, form=form)
 
 # for testing email error
 # @bp.route('/test-error')

@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<img src="{{ user.avatar(40) }}"
+    alt="{{ user.username }}'s avatar"
+    class="rounded-circle me-2"
+    style="width:40px; height:40px; object-fit:cover;">
+<h2>Chat with {{ user.username }}</h2>
+
+<div class="chat-box">
+    {% for message in messages %}
+        {% if message.author == current_user %}
+            <div class="chat-message sent">
+                <p>{{ message.body }}</p>
+            </div>
+        {% else %}
+            <div class="chat-message received">
+                <p>{{ message.body }}</p>
+            </div>
+        {% endif %}
+    {% endfor %}
+</div>
+
+<form method="post">
+    {{ form.hidden_tag() }}
+    {{ form.message(class="form-control") }}
+    {{ form.submit(class="btn btn-primary mt-2") }}
+</form>
+{% endblock %}
