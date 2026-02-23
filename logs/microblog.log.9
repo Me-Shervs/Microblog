@@ -1,0 +1,92 @@
+2026-02-21 19:54:00,916 ERROR: Exception on /index [GET] [in C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\flask\app.py:875]
+Traceback (most recent call last):
+  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\flask_login\utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\sherv\Downloads\microblog\app\main\routes.py", line 36, in index
+    return render_template('index.html', title=_('Home'), form=form, posts=posts.items, next_url=next_url, prev_url=prev_url)
+  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\flask\templating.py", line 150, in render_template
+    return _render(app, template, context)
+  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\flask\templating.py", line 131, in _render
+    rv = template.render(context)
+  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\jinja2\environment.py", line 1295, in render
+    self.environment.handle_exception()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "C:\Users\sherv\Downloads\microblog\app\templates\index.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "C:\Users\sherv\Downloads\microblog\app\templates\base.html", line 76, in template
+    <script {{ src="url_for('static', filename='js/user/user_popups.js')" }}></script>
+    ^^^^^^^^^^^^^^^^^^^^^
+jinja2.exceptions.TemplateSyntaxError: expected token 'end of print statement', got '='
+2026-02-21 19:54:29,160 INFO: Microblog startup [in C:\Users\sherv\Downloads\microblog\app\__init__.py:78]
+2026-02-21 19:55:10,840 INFO: Microblog startup [in C:\Users\sherv\Downloads\microblog\app\__init__.py:78]
+2026-02-21 19:57:14,909 INFO: Microblog startup [in C:\Users\sherv\Downloads\microblog\app\__init__.py:78]
+2026-02-21 19:58:01,699 INFO: Microblog startup [in C:\Users\sherv\Downloads\microblog\app\__init__.py:78]
+2026-02-21 20:00:22,122 INFO: Microblog startup [in C:\Users\sherv\Downloads\microblog\app\__init__.py:78]
+2026-02-21 20:02:48,329 INFO: Microblog startup [in C:\Users\sherv\Downloads\microblog\app\__init__.py:78]
+2026-02-21 20:05:23,101 INFO: Microblog startup [in C:\Users\sherv\Downloads\microblog\app\__init__.py:78]
+2026-02-21 20:06:06,961 INFO: Microblog startup [in C:\Users\sherv\Downloads\microblog\app\__init__.py:78]
+2026-02-21 20:08:04,835 INFO: Microblog startup [in C:\Users\sherv\Downloads\microblog\app\__init__.py:78]
+2026-02-21 20:08:59,813 INFO: Microblog startup [in C:\Users\sherv\Downloads\microblog\app\__init__.py:78]
+2026-02-21 20:12:56,020 INFO: Microblog startup [in C:\Users\sherv\Downloads\microblog\app\__init__.py:78]
+2026-02-21 20:14:02,005 INFO: Microblog startup [in C:\Users\sherv\Downloads\microblog\app\__init__.py:78]
+2026-02-21 20:17:06,001 INFO: Microblog startup [in C:\Users\sherv\Downloads\microblog\app\__init__.py:78]
+2026-02-21 20:19:45,273 INFO: Microblog startup [in C:\Users\sherv\Downloads\microblog\app\__init__.py:78]
+2026-02-21 20:21:56,981 INFO: Microblog startup [in C:\Users\sherv\Downloads\microblog\app\__init__.py:78]
+2026-02-21 20:21:59,412 ERROR: Exception on /user/james1 [GET] [in C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\flask\app.py:875]
+Traceback (most recent call last):
+  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\flask_login\utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\sherv\Downloads\microblog\app\main\routes.py", line 68, in user
+    return render_template('user.html', user=user, posts=posts.items,
+                           next_url=next_url, prev_url=prev_url, form=form)
+  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\flask\templating.py", line 150, in render_template
+    return _render(app, template, context)
+  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\flask\templating.py", line 131, in _render
+    rv = template.render(context)
+  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\jinja2\environment.py", line 1295, in render
+    self.environment.handle_exception()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "C:\Users\sherv\Downloads\microblog\app\templates\user.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "C:\Users\sherv\Downloads\microblog\app\templates\base.html", line 76, in template
+    <script {{ src="url_for('static', filename='js/user/user_popups.js')" }}></script>
+    ^^^^^^^^^^^^^^^^^^^^^
+jinja2.exceptions.TemplateSyntaxError: expected token 'end of print statement', got '='
+2026-02-21 20:22:51,294 INFO: Microblog startup [in C:\Users\sherv\Downloads\microblog\app\__init__.py:78]
+2026-02-21 20:23:27,112 INFO: Microblog startup [in C:\Users\sherv\Downloads\microblog\app\__init__.py:78]
+2026-02-21 20:26:51,547 INFO: Microblog startup [in C:\Users\sherv\Downloads\microblog\app\__init__.py:78]
+2026-02-21 20:35:23,904 INFO: Microblog startup [in C:\Users\sherv\Downloads\microblog\app\__init__.py:78]
+2026-02-21 20:37:34,878 INFO: Microblog startup [in C:\Users\sherv\Downloads\microblog\app\__init__.py:78]
+2026-02-21 20:38:49,567 INFO: Microblog startup [in C:\Users\sherv\Downloads\microblog\app\__init__.py:78]
+2026-02-22 09:35:30,725 INFO: Microblog startup [in C:\Users\sherv\Downloads\microblog\app\__init__.py:78]
+2026-02-22 09:39:32,376 INFO: Microblog startup [in C:\Users\sherv\Downloads\microblog\app\__init__.py:78]
+2026-02-22 09:43:52,625 INFO: Microblog startup [in C:\Users\sherv\Downloads\microblog\app\__init__.py:77]
+2026-02-22 09:47:21,794 INFO: Microblog startup [in C:\Users\sherv\Downloads\microblog\app\__init__.py:77]

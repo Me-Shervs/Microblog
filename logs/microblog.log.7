@@ -1,0 +1,45 @@
+2026-02-22 09:48:17,308 ERROR: Exception on /explore [GET] [in C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\flask\app.py:875]
+Traceback (most recent call last):
+  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\flask_login\utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\sherv\Downloads\microblog\app\main\routes.py", line 50, in explore
+    return render_template('index.html', title=_('Explore'),
+                           posts=posts.items, next_url=next_url,
+                           prev_url=prev_url)
+  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\flask\templating.py", line 150, in render_template
+    return _render(app, template, context)
+  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\flask\templating.py", line 131, in _render
+    rv = template.render(context)
+  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\jinja2\environment.py", line 1295, in render
+    self.environment.handle_exception()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "C:\Users\sherv\Downloads\microblog\app\templates\index.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "C:\Users\sherv\Downloads\microblog\app\templates\base.html", line 16, in template
+    <link src="{{ url_for('static', filename='cs/global.css)' }}">
+    ^^^^^^^^^^^^^^^^^
+jinja2.exceptions.TemplateSyntaxError: unexpected '}', expected ')'
+2026-02-22 09:48:45,823 INFO: Microblog startup [in C:\Users\sherv\Downloads\microblog\app\__init__.py:77]
+2026-02-22 09:49:07,466 INFO: Microblog startup [in C:\Users\sherv\Downloads\microblog\app\__init__.py:77]
+2026-02-22 09:51:22,655 INFO: Microblog startup [in C:\Users\sherv\Downloads\microblog\app\__init__.py:77]
+2026-02-22 09:51:46,254 INFO: Microblog startup [in C:\Users\sherv\Downloads\microblog\app\__init__.py:77]
+2026-02-22 09:52:05,216 INFO: Microblog startup [in C:\Users\sherv\Downloads\microblog\app\__init__.py:77]
+2026-02-22 10:52:19,744 INFO: Microblog startup [in C:\Users\sherv\Downloads\microblog\app\__init__.py:77]
+2026-02-22 10:52:31,682 INFO: Microblog startup [in C:\Users\sherv\Downloads\microblog\app\__init__.py:77]
+2026-02-22 11:32:19,924 INFO: Microblog startup [in C:\Users\sherv\Downloads\microblog\app\__init__.py:77]
+2026-02-22 11:32:26,454 INFO: Microblog startup [in C:\Users\sherv\Downloads\microblog\app\__init__.py:77]
+2026-02-22 11:32:31,005 INFO: Microblog startup [in C:\Users\sherv\Downloads\microblog\app\__init__.py:77]
