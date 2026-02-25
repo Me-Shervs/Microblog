@@ -5,9 +5,10 @@ from flask_login import current_user, login_required
 from flask_babel import _, get_locale
 import sqlalchemy as sa
 from app import db
-from app.main.forms import EditProfileForm, EmptyForm, PostForm, MessageForm
-from app.models import User, Post, Message, Notification
+from app.main.forms import EditProfileForm, EmptyForm, PostForm, MessageForm, CommentForm
+from app.models import User, Post, Message, Notification, Like, Post, Comment
 from app.main import bp
+from flask import jsonify
 
 
 @bp.before_app_request
@@ -22,6 +23,7 @@ def before_request():
 @login_required
 def index():
     form = PostForm()
+    comment_form = CommentForm()
     if form.validate_on_submit():
         post = Post(body=form.post.data, author=current_user)
         db.session.add(post)
@@ -34,11 +36,12 @@ def index():
         if posts.has_next else None
     prev_url = url_for('main.index', page=posts.prev_num) \
         if posts.has_prev else None
-    return render_template('index.html', title=_('Home'), form=form, posts=posts.items, next_url=next_url, prev_url=prev_url)
+    return render_template('index.html', title=_('Home'), form=form, posts=posts.items, next_url=next_url, prev_url=prev_url, comment_form=comment_form)
 
 @bp.route('/explore')
 @login_required
 def explore():
+    comment_form = CommentForm()
     page = request.args.get('page', 1, type=int)
     query = sa.select(Post).order_by(Post.timestamp.desc())
     posts = db.paginate(query, page=page,
@@ -50,7 +53,7 @@ def explore():
         if posts.has_prev else None
     return render_template('index.html', title=_('Explore'),
                            posts=posts.items, next_url=next_url,
-                           prev_url=prev_url)
+                           prev_url=prev_url, comment_form=comment_form)
 
 @bp.route('/user/<username>')
 @login_required
@@ -66,12 +69,14 @@ def user(username):
     prev_url = url_for('main.user', username=user.username,
                        page=posts.prev_num) if posts.has_prev else None
     form = EmptyForm()
+    comment_form = CommentForm()
     return render_template('user.html', user=user, posts=posts.items,
-                           next_url=next_url, prev_url=prev_url, form=form)
+                           next_url=next_url, prev_url=prev_url, form=form, comment_form=comment_form)
 
 @bp.route('/edit_profile', methods=['GET', 'POST'])
 @login_required
 def edit_profile():
+    comment_form = CommentForm()
     form = EditProfileForm(current_user.username)
     if form.validate_on_submit():
         current_user.username = form.username.data
@@ -82,7 +87,7 @@ def edit_profile():
     elif request.method == 'GET':
         form.username.data = current_user.username
         form.about_me.data = current_user.about_me
-    return render_template('edit_profile.html', title=_('Edit Profile'), form=form)
+    return render_template('edit_profile.html', title=_('Edit Profile'), form=form, comment_form=comment_form)
 
 
 @bp.route('/follow/<username>', methods=['POST'])
@@ -199,8 +204,8 @@ def conversation(username):
 
     if form.validate_on_submit():
         msg = Message(author=current_user, recipient=user, body=form.message.data)
-        user.add_notification('unread_message_count', user.unread_message_count())
         db.session.add(msg)
+        user.add_notification('unread_message_count', user.unread_message_count())
         db.session.commit()
         return redirect(url_for('main.conversation', username=username))
 
@@ -219,6 +224,49 @@ def conversation(username):
     ).all()
 
     return render_template('conversation.html', user=user, messages=messages, form=form)
+
+@bp.route('/like/<int:post_id>', methods=['POST'])
+@login_required
+def like_post(post_id):
+    post = db.get_or_404(Post, post_id)
+
+    existing = Like.query.filter_by(
+        user_id=current_user.id,
+        post_id=post.id
+    ).first()
+
+    if existing:
+        db.session.delete(existing)
+        db.session.commit()
+        return jsonify({
+            "liked": False,
+            "count": post.like_count()
+        })
+    else:
+        like = Like(user_id=current_user.id, post_id=post.id)
+        db.session.add(like)
+        db.session.commit()
+        return jsonify({
+            "liked": True,
+            "count": post.like_count()
+        })
+    
+@bp.route('/comment/<int:post_id>', methods=['POST'])
+@login_required
+def add_comment(post_id):
+    post = db.get_or_404(Post, post_id)
+    body = request.form.get('body')
+
+    if body:
+        comment = Comment(
+            body=body,
+            user_id=current_user.id,
+            post_id=post.id
+        )
+        db.session.add(comment)
+        db.session.commit()
+
+    return redirect(request.referrer or url_for('main.index'))
 
 # for testing email error
 # @bp.route('/test-error')

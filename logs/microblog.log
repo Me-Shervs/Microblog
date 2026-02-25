@@ -1,6 +1,4 @@
-2026-02-23 12:16:28,318 INFO: Microblog startup [in C:\Users\sherv\Downloads\microblog\app\__init__.py:77]
-2026-02-23 13:44:29,056 INFO: Microblog startup [in C:\Users\sherv\Downloads\microblog\app\__init__.py:77]
-2026-02-23 13:44:33,026 ERROR: Exception on /messages [GET] [in C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\flask\app.py:875]
+2026-02-24 00:46:07,394 ERROR: Exception on /user/baltz [GET] [in C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\flask\app.py:875]
 Traceback (most recent call last):
   File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
     response = self.full_dispatch_request()
@@ -14,8 +12,9 @@ Traceback (most recent call last):
   File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\flask_login\utils.py", line 290, in decorated_view
     return current_app.ensure_sync(func)(*args, **kwargs)
            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
-  File "C:\Users\sherv\Downloads\microblog\app\main\routes.py", line 179, in messages
-    return render_template('messages.html', users=users)
+  File "C:\Users\sherv\Downloads\microblog\app\main\routes.py", line 72, in user
+    return render_template('user.html', user=user, posts=posts.items,
+                           next_url=next_url, prev_url=prev_url, form=form)
   File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\flask\templating.py", line 150, in render_template
     return _render(app, template, context)
   File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\flask\templating.py", line 131, in _render
@@ -25,91 +24,44 @@ Traceback (most recent call last):
     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
   File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\jinja2\environment.py", line 942, in handle_exception
     raise rewrite_traceback_stack(source=source)
-  File "C:\Users\sherv\Downloads\microblog\app\templates\messages.html", line 1, in top-level template code
-    {% extends 'base.html' %}
-  File "C:\Users\sherv\Downloads\microblog\app\templates\base.html", line 88, in top-level template code
+  File "C:\Users\sherv\Downloads\microblog\app\templates\user.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "C:\Users\sherv\Downloads\microblog\app\templates\base.html", line 89, in top-level template code
     {% block content %}{% endblock %}
     ^^^^^^^^^^^^^^^^^
-  File "C:\Users\sherv\Downloads\microblog\app\templates\messages.html", line 5, in block 'content'
-    <img src="{{ post.author.avatar(40) }}" class="rounded-circle me-2" alt="Avatar">
-    ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\jinja2\environment.py", line 490, in getattr
-    return getattr(obj, attribute)
-jinja2.exceptions.UndefinedError: 'post' is undefined
-2026-02-23 13:44:57,654 INFO: Microblog startup [in C:\Users\sherv\Downloads\microblog\app\__init__.py:77]
-2026-02-23 13:45:00,121 ERROR: Exception on /messages [GET] [in C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\flask\app.py:875]
-Traceback (most recent call last):
-  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
-    response = self.full_dispatch_request()
-  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\flask\app.py", line 902, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
-           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
-  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\flask_login\utils.py", line 290, in decorated_view
-    return current_app.ensure_sync(func)(*args, **kwargs)
-           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
-  File "C:\Users\sherv\Downloads\microblog\app\main\routes.py", line 179, in messages
-    return render_template('messages.html', users=users)
-  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\flask\templating.py", line 150, in render_template
-    return _render(app, template, context)
-  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\flask\templating.py", line 131, in _render
-    rv = template.render(context)
-  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\jinja2\environment.py", line 1295, in render
-    self.environment.handle_exception()
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
-  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\jinja2\environment.py", line 942, in handle_exception
-    raise rewrite_traceback_stack(source=source)
-  File "C:\Users\sherv\Downloads\microblog\app\templates\messages.html", line 1, in top-level template code
-    {% extends 'base.html' %}
-  File "C:\Users\sherv\Downloads\microblog\app\templates\base.html", line 88, in top-level template code
-    {% block content %}{% endblock %}
+  File "C:\Users\sherv\Downloads\microblog\app\templates\user.html", line 42, in block 'content'
+    {% include '_post.html' %}
     ^^^^^^^^^^^^^^^^^
-  File "C:\Users\sherv\Downloads\microblog\app\templates\messages.html", line 5, in block 'content'
-    <img src="{{ user.avatar(40) }}" class="rounded-circle me-2" alt="Avatar">
-    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sherv\Downloads\microblog\app\templates\_post.html", line 42, in top-level template code
+    {{ comment_form.hidden_tag() }}
+    ^^^^^^^^^
   File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\jinja2\environment.py", line 490, in getattr
     return getattr(obj, attribute)
-jinja2.exceptions.UndefinedError: 'user' is undefined
-2026-02-23 13:45:49,463 INFO: Microblog startup [in C:\Users\sherv\Downloads\microblog\app\__init__.py:77]
-2026-02-23 13:45:51,088 ERROR: Exception on /messages [GET] [in C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\flask\app.py:875]
-Traceback (most recent call last):
-  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
-    response = self.full_dispatch_request()
-  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\flask\app.py", line 902, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
-           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
-  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\flask_login\utils.py", line 290, in decorated_view
-    return current_app.ensure_sync(func)(*args, **kwargs)
-           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
-  File "C:\Users\sherv\Downloads\microblog\app\main\routes.py", line 179, in messages
-    return render_template('messages.html', users=users)
-  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\flask\templating.py", line 150, in render_template
-    return _render(app, template, context)
-  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\flask\templating.py", line 131, in _render
-    rv = template.render(context)
-  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\jinja2\environment.py", line 1295, in render
-    self.environment.handle_exception()
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
-  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\jinja2\environment.py", line 942, in handle_exception
-    raise rewrite_traceback_stack(source=source)
-  File "C:\Users\sherv\Downloads\microblog\app\templates\messages.html", line 1, in top-level template code
-    {% extends 'base.html' %}
-  File "C:\Users\sherv\Downloads\microblog\app\templates\base.html", line 88, in top-level template code
-    {% block content %}{% endblock %}
-    ^^^^^^^^^^^^^^^^^
-  File "C:\Users\sherv\Downloads\microblog\app\templates\messages.html", line 5, in block 'content'
-    <img src="{{ url_for('static', filename='profile_pics/' + user.avatar) }}"
-    ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\jinja2\environment.py", line 490, in getattr
-    return getattr(obj, attribute)
-jinja2.exceptions.UndefinedError: 'user' is undefined
-2026-02-23 13:49:21,581 INFO: Microblog startup [in C:\Users\sherv\Downloads\microblog\app\__init__.py:77]
-2026-02-23 13:50:08,624 INFO: Microblog startup [in C:\Users\sherv\Downloads\microblog\app\__init__.py:77]
-2026-02-23 13:50:56,424 INFO: Microblog startup [in C:\Users\sherv\Downloads\microblog\app\__init__.py:77]
+jinja2.exceptions.UndefinedError: 'comment_form' is undefined
+2026-02-24 00:47:42,820 INFO: Microblog startup [in C:\Users\sherv\Downloads\microblog\app\__init__.py:77]
+2026-02-24 00:53:22,033 INFO: Microblog startup [in C:\Users\sherv\Downloads\microblog\app\__init__.py:77]
+2026-02-24 00:58:22,879 INFO: Microblog startup [in C:\Users\sherv\Downloads\microblog\app\__init__.py:77]
+2026-02-24 01:07:08,680 INFO: Microblog startup [in C:\Users\sherv\Downloads\microblog\app\__init__.py:77]
+2026-02-24 01:07:53,329 INFO: Microblog startup [in C:\Users\sherv\Downloads\microblog\app\__init__.py:77]
+2026-02-24 01:09:22,048 INFO: Microblog startup [in C:\Users\sherv\Downloads\microblog\app\__init__.py:77]
+2026-02-24 01:11:46,281 INFO: Microblog startup [in C:\Users\sherv\Downloads\microblog\app\__init__.py:77]
+2026-02-24 01:20:57,198 INFO: Microblog startup [in C:\Users\sherv\Downloads\microblog\app\__init__.py:77]
+2026-02-24 01:21:33,012 INFO: Microblog startup [in C:\Users\sherv\Downloads\microblog\app\__init__.py:77]
+2026-02-24 01:21:53,125 INFO: Microblog startup [in C:\Users\sherv\Downloads\microblog\app\__init__.py:77]
+2026-02-24 01:22:48,885 INFO: Microblog startup [in C:\Users\sherv\Downloads\microblog\app\__init__.py:77]
+2026-02-24 01:23:41,688 INFO: Microblog startup [in C:\Users\sherv\Downloads\microblog\app\__init__.py:77]
+2026-02-24 01:26:50,153 INFO: Microblog startup [in C:\Users\sherv\Downloads\microblog\app\__init__.py:77]
+2026-02-24 01:30:03,781 INFO: Microblog startup [in C:\Users\sherv\Downloads\microblog\app\__init__.py:77]
+2026-02-24 01:31:03,464 INFO: Microblog startup [in C:\Users\sherv\Downloads\microblog\app\__init__.py:77]
+2026-02-24 01:35:10,013 INFO: Microblog startup [in C:\Users\sherv\Downloads\microblog\app\__init__.py:77]
+2026-02-24 01:36:25,595 INFO: Microblog startup [in C:\Users\sherv\Downloads\microblog\app\__init__.py:77]
+2026-02-24 01:37:58,132 INFO: Microblog startup [in C:\Users\sherv\Downloads\microblog\app\__init__.py:77]
+2026-02-24 01:38:18,212 INFO: Microblog startup [in C:\Users\sherv\Downloads\microblog\app\__init__.py:77]
+2026-02-24 01:38:44,382 INFO: Microblog startup [in C:\Users\sherv\Downloads\microblog\app\__init__.py:77]
+2026-02-24 01:39:33,991 INFO: Microblog startup [in C:\Users\sherv\Downloads\microblog\app\__init__.py:77]
+2026-02-24 01:43:11,141 INFO: Microblog startup [in C:\Users\sherv\Downloads\microblog\app\__init__.py:77]
+2026-02-24 01:43:19,190 INFO: Microblog startup [in C:\Users\sherv\Downloads\microblog\app\__init__.py:77]
+2026-02-24 01:43:33,788 INFO: Microblog startup [in C:\Users\sherv\Downloads\microblog\app\__init__.py:77]
+2026-02-24 01:43:49,063 INFO: Microblog startup [in C:\Users\sherv\Downloads\microblog\app\__init__.py:77]
+2026-02-24 01:44:05,626 INFO: Microblog startup [in C:\Users\sherv\Downloads\microblog\app\__init__.py:77]
+2026-02-25 20:35:03,803 INFO: Microblog startup [in C:\Users\sherv\Downloads\microblog\app\__init__.py:77]

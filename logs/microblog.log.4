@@ -1,12 +1,4 @@
-2026-02-22 11:35:25,951 ERROR: Exception on /explore [GET] [in C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\flask\app.py:875]
-Traceback (most recent call last):
-  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 2531, in get_property
-    return self._props[key]
-           ~~~~~~~~~~~^^^^^
-KeyError: 'messages_sent'
-
-The above exception was the direct cause of the following exception:
-
+2026-02-24 00:21:02,204 ERROR: Exception on /notifications [GET] [in C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\flask\app.py:875]
 Traceback (most recent call last):
   File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
     response = self.full_dispatch_request()
@@ -16,7 +8,7 @@ Traceback (most recent call last):
     rv = self.preprocess_request()
   File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\flask\app.py", line 1291, in preprocess_request
     rv = self.ensure_sync(before_func)()
-  File "C:\Users\sherv\Downloads\microblog\app\main\routes.py", line 15, in before_request
+  File "C:\Users\sherv\Downloads\microblog\app\main\routes.py", line 16, in before_request
     if current_user.is_authenticated:
        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\werkzeug\local.py", line 318, in __get__
@@ -32,9 +24,7 @@ Traceback (most recent call last):
     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
   File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\flask_login\login_manager.py", line 364, in _load_user
     user = self._user_callback(user_id)
-  File "C:\Users\sherv\Downloads\microblog\app\models.py", line 142, in load_user
-    return db.session.get(User, int(id))
-           ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\sherv\Downloads\microblog\app\models.py", line 198, in load_user
   File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\sqlalchemy\orm\scoping.py", line 1044, in get
     return self._proxied.get(
            ~~~~~~~~~~~~~~~~~^
@@ -189,25 +179,10 @@ Traceback (most recent call last):
   File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 4227, in _configure_registries
     _do_configure_registries(registries, cascade)
     ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 4268, in _do_configure_registries
-    mapper._post_configure_properties()
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
-  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 2427, in _post_configure_properties
-    prop.init()
-    ~~~~~~~~~^^
-  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\sqlalchemy\orm\interfaces.py", line 595, in init
-    self.do_init()
-    ~~~~~~~~~~~~^^
-  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\sqlalchemy\orm\relationships.py", line 1660, in do_init
-    self._generate_backref()
-    ~~~~~~~~~~~~~~~~~~~~~~^^
-  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\sqlalchemy\orm\relationships.py", line 2144, in _generate_backref
-    self._add_reverse_property(self.back_populates)
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\sqlalchemy\orm\relationships.py", line 1591, in _add_reverse_property
-    other = self.mapper.get_property(key, _configure_mappers=False)
-  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 2533, in get_property
-    raise sa_exc.InvalidRequestError(
-    ...<3 lines>...
-    ) from err
-sqlalchemy.exc.InvalidRequestError: Mapper 'Mapper[User(user)]' has no property 'messages_sent'.  If this property was indicated from other mappers or configure events, ensure registry.configure() has been called.
+  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 4264, in _do_configure_registries
+    raise e
+sqlalchemy.exc.InvalidRequestError: One or more mappers failed to initialize - can't proceed with initialization of other mappers. Triggering mapper: 'Mapper[Comment(comment)]'. Original exception was: Error creating backref 'comments' on relationship 'Comment.post': property of that name exists on mapper 'Mapper[Post(post)]'
+2026-02-24 00:21:14,930 INFO: Microblog startup [in C:\Users\sherv\Downloads\microblog\app\__init__.py:77]
+2026-02-24 00:21:17,798 INFO: Microblog startup [in C:\Users\sherv\Downloads\microblog\app\__init__.py:77]
+2026-02-24 00:21:21,649 INFO: Microblog startup [in C:\Users\sherv\Downloads\microblog\app\__init__.py:77]
+2026-02-24 00:26:26,835 INFO: Microblog startup [in C:\Users\sherv\Downloads\microblog\app\__init__.py:77]

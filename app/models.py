@@ -46,6 +46,7 @@ class User(UserMixin, db.Model):
         foreign_keys='Message.recipient_id', back_populates='recipient'
     )
     notifications: so.WriteOnlyMapped['Notification'] = so.relationship(back_populates='user')
+    comments_received: so.WriteOnlyMapped['Comment'] = so.relationship(back_populates='user')
     
     def __repr__(self):
         return '<User {}>'.format(self.username)
@@ -129,9 +130,19 @@ class Post(db.Model):
     user_id: so.Mapped[int] = so.mapped_column(sa.ForeignKey(User.id), index=True)
 
     author: so.Mapped[User] = so.relationship(back_populates='posts')
+    comments: so.Mapped[list["Comment"]] = so.relationship(back_populates="post", cascade="all, delete-orphan")
 
     def __repr__(self):
         return '<Post {}>'.format(self.body)
+    
+    def like_count(self):
+        return len(self.likes)
+
+    def comment_count(self):
+        return len(self.comments)
+
+    def is_liked_by(self, user):
+        return any(like.user_id == user.id for like in self.likes)
     
 class Message(db.Model):
     id: so.Mapped[int] = so.mapped_column(primary_key=True)
@@ -157,6 +168,29 @@ class Notification(db.Model):
 
     def get_data(self):
         return json.loads(str(self.payload_json))
+    
+class Like(db.Model):
+    id: so.Mapped[int] = so.mapped_column(primary_key=True)
+    user_id: so.Mapped[int] = so.mapped_column(sa.ForeignKey(User.id), index=True)
+    post_id: so.Mapped[int] = so.mapped_column(sa.ForeignKey(Post.id), index=True)
+    timestamp: so.Mapped[datetime] = so.mapped_column(
+        default=lambda: datetime.now(timezone.utc)
+    )
+
+    user: so.Mapped[User] = so.relationship(backref='likes')
+    post: so.Mapped[Post] = so.relationship(backref='likes')
+
+class Comment(db.Model):
+    id: so.Mapped[int] = so.mapped_column(primary_key=True)
+    body: so.Mapped[str] = so.mapped_column(sa.String(255))
+    timestamp: so.Mapped[datetime] = so.mapped_column(default=lambda: datetime.now(timezone.utc))
+
+    user_id: so.Mapped[int] = so.mapped_column(sa.ForeignKey(User.id), index=True)
+    post_id: so.Mapped[int] = so.mapped_column(sa.ForeignKey(Post.id), index=True)
+
+    user: so.Mapped[User] = so.relationship('User', back_populates='comments_received')
+    post: so.Mapped[Post] = so.relationship('Post', back_populates='comments')
+    
     
 @login.user_loader
 def load_user(id):

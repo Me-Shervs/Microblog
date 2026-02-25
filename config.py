@@ -17,7 +17,7 @@ class Config:
     ADMINS = ['shrvs.practice@gmail.com']
 
     # for post per pages
-    POSTS_PER_PAGE = 3
+    POSTS_PER_PAGE = 15
     # for different languages
     LANGUAGES = ['en', 'es', 'fil_PH']
 

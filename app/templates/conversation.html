@@ -1,29 +1,44 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<img src="{{ user.avatar(40) }}"
-    alt="{{ user.username }}'s avatar"
-    class="rounded-circle me-2"
-    style="width:40px; height:40px; object-fit:cover;">
-<h2>Chat with {{ user.username }}</h2>
+<div class="vh-80 d-flex flex-column">
+    <div class="d-flex flex-fill">
+        <div class="flex-fill">
+            <img src="{{ user.avatar(40) }}"
+                alt="{{ user.username }}'s avatar"
+                class="rounded-circle me-2"
+                style="width:40px; height:40px; object-fit:cover;">
+        </div>
+        <div class="flex-fill">
+            <h2>Chat with {{ user.username }}</h2>
+        </div>
+    </div>
 
-<div class="chat-box">
-    {% for message in messages %}
-        {% if message.author == current_user %}
-            <div class="chat-message sent">
-                <p>{{ message.body }}</p>
-            </div>
-        {% else %}
-            <div class="chat-message received">
-                <p>{{ message.body }}</p>
-            </div>
-        {% endif %}
-    {% endfor %}
+    <div class="chat-box flex-fill" id="end-start">
+        {% for message in messages %}
+            {% if message.author == current_user %}
+                <div class="chat-message sent">
+                    <p>{{ message.body }}</p>
+                </div>
+            {% else %}
+                <div class="chat-message received">
+                    <p>{{ message.body }}</p>
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+    <div class="flex-fill">
+        <form method="post">
+            {{ form.hidden_tag() }}
+            {{ form.message(class="form-control") }}
+            {{ form.submit(class="btn btn-primary mt-2") }}
+        </form>
+    </div>
+
+    <script>
+        // Scroll chat to bottom on page load
+        const chatBox = document.getElementById('end-start');
+        chatBox.scrollTop = chatBox.scrollHeight;
+    </script>
 </div>
-
-<form method="post">
-    {{ form.hidden_tag() }}
-    {{ form.message(class="form-control") }}
-    {{ form.submit(class="btn btn-primary mt-2") }}
-</form>
 {% endblock %}

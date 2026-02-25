@@ -1,8 +1,4 @@
-2026-02-22 11:38:14,037 INFO: Microblog startup [in C:\Users\sherv\Downloads\microblog\app\__init__.py:77]
-2026-02-22 11:38:22,235 INFO: Microblog startup [in C:\Users\sherv\Downloads\microblog\app\__init__.py:77]
-2026-02-22 11:38:31,908 INFO: Microblog startup [in C:\Users\sherv\Downloads\microblog\app\__init__.py:77]
-2026-02-22 11:39:40,574 INFO: Microblog startup [in C:\Users\sherv\Downloads\microblog\app\__init__.py:77]
-2026-02-22 11:39:45,352 ERROR: Exception on /messages [GET] [in C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\flask\app.py:875]
+2026-02-24 00:43:41,617 ERROR: Exception on /user/baltz [GET] [in C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\flask\app.py:875]
 Traceback (most recent call last):
   File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
     response = self.full_dispatch_request()
@@ -16,103 +12,33 @@ Traceback (most recent call last):
   File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\flask_login\utils.py", line 290, in decorated_view
     return current_app.ensure_sync(func)(*args, **kwargs)
            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
-  File "C:\Users\sherv\Downloads\microblog\app\main\routes.py", line 160, in messages
-    query = current_user.messages_received.select().order_by(Message.timestamp.desc)
-  File "<string>", line 2, in order_by
-  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\sqlalchemy\sql\base.py", line 284, in _generative
-    x = fn(self, *args, **kw)
-  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\sqlalchemy\sql\selectable.py", line 4430, in order_by
-    self._order_by_clauses += tuple(
-                              ^^^^^
-  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\sqlalchemy\sql\selectable.py", line 4431, in <genexpr>
-    coercions.expect(
-    ~~~~~~~~~~~~~~~~^
-        roles.OrderByRole, clause, apply_propagate_attrs=self
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\sqlalchemy\sql\coercions.py", line 333, in expect
-    return lambdas.LambdaElement(
-           ~~~~~~~~~~~~~~~~~~~~~^
-        element,
-        ^^^^^^^^
-    ...<2 lines>...
-        apply_propagate_attrs=apply_propagate_attrs,
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\sqlalchemy\sql\lambdas.py", line 213, in __init__
-    rec = self._retrieve_tracker_rec(fn, apply_propagate_attrs, opts)
-  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\sqlalchemy\sql\lambdas.py", line 229, in _retrieve_tracker_rec
-    tracker = AnalyzedCode.get(
-        fn,
-        self,
-        opts,
-    )
-  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\sqlalchemy\sql\lambdas.py", line 752, in get
-    cls._fns[fn.__code__] = analyzed = AnalyzedCode(
-                                       ~~~~~~~~~~~~^
-        fn, lambda_element, lambda_kw, **kw
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\sqlalchemy\sql\lambdas.py", line 759, in __init__
-    raise exc.ArgumentError(
-        "Method %s may not be passed as a SQL expression" % fn
-    )
-sqlalchemy.exc.ArgumentError: Method <bound method ColumnOperators.desc of <sqlalchemy.orm.attributes.InstrumentedAttribute object at 0x00000151DB897C40>> may not be passed as a SQL expression
-2026-02-22 11:41:54,308 INFO: Microblog startup [in C:\Users\sherv\Downloads\microblog\app\__init__.py:77]
-2026-02-22 11:43:38,217 INFO: Microblog startup [in C:\Users\sherv\Downloads\microblog\app\__init__.py:77]
-2026-02-22 11:46:40,354 INFO: Microblog startup [in C:\Users\sherv\Downloads\microblog\app\__init__.py:77]
-2026-02-22 11:46:58,175 INFO: Microblog startup [in C:\Users\sherv\Downloads\microblog\app\__init__.py:77]
-2026-02-22 11:48:00,479 INFO: Microblog startup [in C:\Users\sherv\Downloads\microblog\app\__init__.py:77]
-2026-02-22 11:49:28,024 INFO: Microblog startup [in C:\Users\sherv\Downloads\microblog\app\__init__.py:77]
-2026-02-22 11:49:49,467 INFO: Microblog startup [in C:\Users\sherv\Downloads\microblog\app\__init__.py:77]
-2026-02-22 11:52:52,814 INFO: Microblog startup [in C:\Users\sherv\Downloads\microblog\app\__init__.py:77]
-2026-02-22 12:55:19,600 INFO: Microblog startup [in C:\Users\sherv\Downloads\microblog\app\__init__.py:77]
-2026-02-22 12:56:24,815 INFO: Microblog startup [in C:\Users\sherv\Downloads\microblog\app\__init__.py:77]
-2026-02-22 12:56:55,390 INFO: Microblog startup [in C:\Users\sherv\Downloads\microblog\app\__init__.py:77]
-2026-02-22 12:58:53,034 INFO: Microblog startup [in C:\Users\sherv\Downloads\microblog\app\__init__.py:77]
-2026-02-22 13:00:12,978 INFO: Microblog startup [in C:\Users\sherv\Downloads\microblog\app\__init__.py:77]
-2026-02-22 13:03:03,453 INFO: Microblog startup [in C:\Users\sherv\Downloads\microblog\app\__init__.py:77]
-2026-02-22 13:04:08,026 INFO: Microblog startup [in C:\Users\sherv\Downloads\microblog\app\__init__.py:77]
-2026-02-23 11:42:33,720 INFO: Microblog startup [in C:\Users\sherv\Downloads\microblog\app\__init__.py:77]
-2026-02-23 11:42:49,359 INFO: Microblog startup [in C:\Users\sherv\Downloads\microblog\app\__init__.py:77]
-2026-02-23 12:07:27,633 INFO: Microblog startup [in C:\Users\sherv\Downloads\microblog\app\__init__.py:77]
-2026-02-23 12:07:41,569 ERROR: Exception on /index [GET] [in C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\flask\app.py:875]
-Traceback (most recent call last):
-  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
-    response = self.full_dispatch_request()
-  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\flask\app.py", line 915, in full_dispatch_request
-    rv = self.preprocess_request()
-  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\flask\app.py", line 1291, in preprocess_request
-    rv = self.ensure_sync(before_func)()
-  File "C:\Users\sherv\Downloads\microblog\app\main\routes.py", line 15, in before_request
-    if current_user.is_authenticated:
-       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\werkzeug\local.py", line 318, in __get__
-    obj = instance._get_current_object()
-  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\werkzeug\local.py", line 526, in _get_current_object
-    return get_name(local())
-                    ~~~~~^^
-  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\flask_login\utils.py", line 25, in <lambda>
-    current_user = LocalProxy(lambda: _get_user())
-                                      ~~~~~~~~~^^
-  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\flask_login\utils.py", line 370, in _get_user
-    current_app.login_manager._load_user()
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
-  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\flask_login\login_manager.py", line 364, in _load_user
-    user = self._user_callback(user_id)
-  File "C:\Users\sherv\Downloads\microblog\app\models.py", line 163, in load_user
-    return db.session.get(User, int(id))
-                                ~~~^^^^
-TypeError: int() argument must be a string, a bytes-like object or a real number, not 'builtin_function_or_method'
-2026-02-23 12:09:56,399 INFO: Microblog startup [in C:\Users\sherv\Downloads\microblog\app\__init__.py:77]
-2026-02-23 12:12:32,482 INFO: Microblog startup [in C:\Users\sherv\Downloads\microblog\app\__init__.py:77]
-2026-02-23 12:14:10,390 INFO: Microblog startup [in C:\Users\sherv\Downloads\microblog\app\__init__.py:77]
-2026-02-23 12:14:16,322 ERROR: Exception on /send_message/kevin [GET] [in C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\flask\app.py:875]
+  File "C:\Users\sherv\Downloads\microblog\app\main\routes.py", line 71, in user
+    return render_template('user.html', user=user, posts=posts.items,
+                           next_url=next_url, prev_url=prev_url, form=form)
+  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\flask\templating.py", line 150, in render_template
+    return _render(app, template, context)
+  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\flask\templating.py", line 131, in _render
+    rv = template.render(context)
+  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\jinja2\environment.py", line 1295, in render
+    self.environment.handle_exception()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "C:\Users\sherv\Downloads\microblog\app\templates\user.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "C:\Users\sherv\Downloads\microblog\app\templates\base.html", line 89, in top-level template code
+    {% block content %}{% endblock %}
+    ^^^^^^^^^^^^^^^^^
+  File "C:\Users\sherv\Downloads\microblog\app\templates\user.html", line 42, in block 'content'
+    {% include '_post.html' %}
+    ^^^^^^^^^^^^^^^^^
+  File "C:\Users\sherv\Downloads\microblog\app\templates\_post.html", line 42, in top-level template code
+    {{ comment_form.hidden_tag() }}
+    ^^^^^^^^^
+  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\jinja2\environment.py", line 490, in getattr
+    return getattr(obj, attribute)
+jinja2.exceptions.UndefinedError: 'comment_form' is undefined
+2026-02-24 00:43:43,487 ERROR: Exception on /user/baltz [GET] [in C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\flask\app.py:875]
 Traceback (most recent call last):
   File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
     response = self.full_dispatch_request()
@@ -126,11 +52,70 @@ Traceback (most recent call last):
   File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\flask_login\utils.py", line 290, in decorated_view
     return current_app.ensure_sync(func)(*args, **kwargs)
            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
-  File "C:\Users\sherv\Downloads\microblog\app\main\routes.py", line 144, in send_message
-    user = db.first_404(sa.select(User).where(User.username == recipient))
-           ^^^^^^^^^^^^
-  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\flask_sqlalchemy\extension.py", line 1008, in __getattr__
-    raise AttributeError(name)
-AttributeError: first_404. Did you mean: 'first_or_404'?
-2026-02-23 12:16:13,003 INFO: Microblog startup [in C:\Users\sherv\Downloads\microblog\app\__init__.py:77]
-2026-02-23 12:16:22,663 INFO: Microblog startup [in C:\Users\sherv\Downloads\microblog\app\__init__.py:77]
+  File "C:\Users\sherv\Downloads\microblog\app\main\routes.py", line 71, in user
+    return render_template('user.html', user=user, posts=posts.items,
+                           next_url=next_url, prev_url=prev_url, form=form)
+  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\flask\templating.py", line 150, in render_template
+    return _render(app, template, context)
+  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\flask\templating.py", line 131, in _render
+    rv = template.render(context)
+  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\jinja2\environment.py", line 1295, in render
+    self.environment.handle_exception()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "C:\Users\sherv\Downloads\microblog\app\templates\user.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "C:\Users\sherv\Downloads\microblog\app\templates\base.html", line 89, in top-level template code
+    {% block content %}{% endblock %}
+    ^^^^^^^^^^^^^^^^^
+  File "C:\Users\sherv\Downloads\microblog\app\templates\user.html", line 42, in block 'content'
+    {% include '_post.html' %}
+    ^^^^^^^^^^^^^^^^^
+  File "C:\Users\sherv\Downloads\microblog\app\templates\_post.html", line 42, in top-level template code
+    {{ comment_form.hidden_tag() }}
+    ^^^^^^^^^
+  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\jinja2\environment.py", line 490, in getattr
+    return getattr(obj, attribute)
+jinja2.exceptions.UndefinedError: 'comment_form' is undefined
+2026-02-24 00:45:58,849 INFO: Microblog startup [in C:\Users\sherv\Downloads\microblog\app\__init__.py:77]
+2026-02-24 00:46:02,601 ERROR: Exception on /user/baltz [GET] [in C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\flask\app.py:875]
+Traceback (most recent call last):
+  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\flask_login\utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\sherv\Downloads\microblog\app\main\routes.py", line 72, in user
+    return render_template('user.html', user=user, posts=posts.items,
+                           next_url=next_url, prev_url=prev_url, form=form)
+  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\flask\templating.py", line 150, in render_template
+    return _render(app, template, context)
+  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\flask\templating.py", line 131, in _render
+    rv = template.render(context)
+  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\jinja2\environment.py", line 1295, in render
+    self.environment.handle_exception()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "C:\Users\sherv\Downloads\microblog\app\templates\user.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "C:\Users\sherv\Downloads\microblog\app\templates\base.html", line 89, in top-level template code
+    {% block content %}{% endblock %}
+    ^^^^^^^^^^^^^^^^^
+  File "C:\Users\sherv\Downloads\microblog\app\templates\user.html", line 42, in block 'content'
+    {% include '_post.html' %}
+    ^^^^^^^^^^^^^^^^^
+  File "C:\Users\sherv\Downloads\microblog\app\templates\_post.html", line 42, in top-level template code
+    {{ comment_form.hidden_tag() }}
+    ^^^^^^^^^
+  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\jinja2\environment.py", line 490, in getattr
+    return getattr(obj, attribute)
+jinja2.exceptions.UndefinedError: 'comment_form' is undefined

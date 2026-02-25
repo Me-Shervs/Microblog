@@ -1,6 +1,6 @@
 <table class="table table-hover">
     <tr>
-        <td width="70px">
+        <td width="60px">
             <a href="{{ url_for('main.user', username=post.author.username) }}">
                 <img class="image_css" src="{{ post.author.avatar(70) }}">
             </a>
@@ -18,5 +18,34 @@
             <br>
             <span>{{ post.body }}</span>
         </td>
+        <td>
+            <button class="like-btn" data-post-id="{{ post.id }}">
+                ❤️ 
+                <span id="like-count-{{ post.id }}">
+                    {{ post.like_count() }}
+                </span>
+            </button>
+            Comments {{ post.comment_count() }}
+        </td>
+    </tr>
+    <tr class="full-width-row">
+        <td colspan="3">
+            <div class="d-flex w-100">
+                <div class="flex-fill p-2" style="width:50%;">
+                    {% for comment in post.comments|sort(attribute='timestamp') %}
+                        <div class="comment">
+                            <strong>{{ comment.user.username }}</strong> {{ comment.body }}
+                        </div>
+                    {% endfor %}
+                </div>
+                <div class="flex-fill p-2" style="width:50%;">
+                    <form action="{{ url_for('main.add_comment', post_id=post.id) }}" method="post">
+                        {{ comment_form.hidden_tag() }}
+                        {{ comment_form.body(class="form-control", placeholder="Add a comment...") }}
+                        {{ comment_form.submit(class="btn btn-primary btn-sm mt-1") }}
+                    </form>
+                </div>
+            </div>
+        <td>
     </tr>
 </table>
