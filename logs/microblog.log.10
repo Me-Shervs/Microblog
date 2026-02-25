@@ -1,4 +1,4 @@
-2026-02-24 00:17:46,504 ERROR: Exception on /notifications [GET] [in C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\flask\app.py:875]
+2026-02-24 00:19:02,213 ERROR: Exception on /notifications [GET] [in C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\flask\app.py:875]
 Traceback (most recent call last):
   File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
     response = self.full_dispatch_request()

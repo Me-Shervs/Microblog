@@ -1,4 +1,4 @@
-2026-02-24 00:17:48,538 ERROR: Exception on /comment/10 [POST] [in C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\flask\app.py:875]
+2026-02-24 00:20:02,212 ERROR: Exception on /notifications [GET] [in C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\flask\app.py:875]
 Traceback (most recent call last):
   File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
     response = self.full_dispatch_request()
@@ -25,8 +25,6 @@ Traceback (most recent call last):
   File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\flask_login\login_manager.py", line 364, in _load_user
     user = self._user_callback(user_id)
   File "C:\Users\sherv\Downloads\microblog\app\models.py", line 198, in load_user
-    return db.session.get(User, int(id))
-           ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
   File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\sqlalchemy\orm\scoping.py", line 1044, in get
     return self._proxied.get(
            ~~~~~~~~~~~~~~~~~^

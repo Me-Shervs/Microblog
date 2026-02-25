@@ -1,188 +1,69 @@
-2026-02-24 00:21:02,204 ERROR: Exception on /notifications [GET] [in C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\flask\app.py:875]
+2026-02-24 00:46:07,394 ERROR: Exception on /user/baltz [GET] [in C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\flask\app.py:875]
 Traceback (most recent call last):
   File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
     response = self.full_dispatch_request()
   File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
     rv = self.handle_user_exception(e)
-  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\flask\app.py", line 915, in full_dispatch_request
-    rv = self.preprocess_request()
-  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\flask\app.py", line 1291, in preprocess_request
-    rv = self.ensure_sync(before_func)()
-  File "C:\Users\sherv\Downloads\microblog\app\main\routes.py", line 16, in before_request
-    if current_user.is_authenticated:
-       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\werkzeug\local.py", line 318, in __get__
-    obj = instance._get_current_object()
-  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\werkzeug\local.py", line 526, in _get_current_object
-    return get_name(local())
-                    ~~~~~^^
-  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\flask_login\utils.py", line 25, in <lambda>
-    current_user = LocalProxy(lambda: _get_user())
-                                      ~~~~~~~~~^^
-  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\flask_login\utils.py", line 370, in _get_user
-    current_app.login_manager._load_user()
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
-  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\flask_login\login_manager.py", line 364, in _load_user
-    user = self._user_callback(user_id)
-  File "C:\Users\sherv\Downloads\microblog\app\models.py", line 198, in load_user
-  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\sqlalchemy\orm\scoping.py", line 1044, in get
-    return self._proxied.get(
-           ~~~~~~~~~~~~~~~~~^
-        entity,
-        ^^^^^^^
-    ...<6 lines>...
-        bind_arguments=bind_arguments,
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\sqlalchemy\orm\session.py", line 3680, in get
-    return self._get_impl(
-           ~~~~~~~~~~~~~~^
-        entity,
-        ^^^^^^^
-    ...<7 lines>...
-        bind_arguments=bind_arguments,
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\sqlalchemy\orm\session.py", line 3859, in _get_impl
-    return db_load_fn(
-        self,
-    ...<5 lines>...
-        bind_arguments=bind_arguments,
-    )
-  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\sqlalchemy\orm\loading.py", line 695, in load_on_pk_identity
-    session.execute(
-    ~~~~~~~~~~~~~~~^
-        q,
-        ^^
-    ...<2 lines>...
-        bind_arguments=bind_arguments,
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\sqlalchemy\orm\session.py", line 2351, in execute
-    return self._execute_internal(
-           ~~~~~~~~~~~~~~~~~~~~~~^
-        statement,
-        ^^^^^^^^^^
-    ...<4 lines>...
-        _add_event=_add_event,
-        ^^^^^^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\sqlalchemy\orm\session.py", line 2249, in _execute_internal
-    result: Result[Any] = compile_state_cls.orm_execute_statement(
-                          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
-        self,
-        ^^^^^
-    ...<4 lines>...
-        conn,
-        ^^^^^
-    )
-    ^
-  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\sqlalchemy\orm\context.py", line 306, in orm_execute_statement
-    result = conn.execute(
-        statement, params or {}, execution_options=execution_options
-    )
-  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1419, in execute
-    return meth(
-        self,
-        distilled_parameters,
-        execution_options or NO_OPTIONS,
-    )
-  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\sqlalchemy\sql\elements.py", line 527, in _execute_on_connection
-    return connection._execute_clauseelement(
-           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
-        self, distilled_params, execution_options
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1633, in _execute_clauseelement
-    compiled_sql, extracted_params, cache_hit = elem._compile_w_cache(
-                                                ~~~~~~~~~~~~~~~~~~~~~^
-        dialect=dialect,
-        ^^^^^^^^^^^^^^^^
-    ...<4 lines>...
-        linting=self.dialect.compiler_linting | compiler.WARN_LINTING,
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\sqlalchemy\sql\elements.py", line 716, in _compile_w_cache
-    compiled_sql = self._compiler(
-        dialect,
-    ...<4 lines>...
-        **kw,
-    )
-  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\sqlalchemy\sql\elements.py", line 324, in _compiler
-    return dialect.statement_compiler(dialect, self, **kw)
-           ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\sqlalchemy\sql\compiler.py", line 1448, in __init__
-    Compiled.__init__(self, dialect, statement, **kwargs)
-    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\sqlalchemy\sql\compiler.py", line 888, in __init__
-    self.string = self.process(self.statement, **compile_kwargs)
-                  ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\sqlalchemy\sql\compiler.py", line 934, in process
-    return obj._compiler_dispatch(self, **kwargs)
-           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
-  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\sqlalchemy\sql\visitors.py", line 138, in _compiler_dispatch
-    return meth(self, **kw)  # type: ignore  # noqa: E501
-  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\sqlalchemy\sql\compiler.py", line 4783, in visit_select
-    compile_state = select_stmt._compile_state_factory(
-        select_stmt, self, **kwargs
-    )
-  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\sqlalchemy\sql\base.py", line 701, in create_for_statement
-    return klass.create_for_statement(statement, compiler, **kw)
-           ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\sqlalchemy\orm\context.py", line 447, in create_for_statement
-    return cls._create_orm_context(
-           ~~~~~~~~~~~~~~~~~~~~~~~^
-        cast("Union[Select, FromStatement]", statement),
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    ...<2 lines>...
-        **kw,
-        ^^^^^
-    )
-    ^
-  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\sqlalchemy\orm\context.py", line 1175, in _create_orm_context
-    _QueryEntity.to_compile_state(
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
-        self,
-        ^^^^^
-    ...<2 lines>...
-        is_current_entities=True,
-        ^^^^^^^^^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\sqlalchemy\orm\context.py", line 2628, in to_compile_state
-    _MapperEntity(
-    ~~~~~~~~~~~~~^
-        compile_state,
-        ^^^^^^^^^^^^^^
-    ...<2 lines>...
-        is_current_entities,
-        ^^^^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\sqlalchemy\orm\context.py", line 2708, in __init__
-    entity._post_inspect
-  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 1338, in __get__
-    obj.__dict__[self.__name__] = result = self.fget(obj)
-                                           ~~~~~~~~~^^^^^
-  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 2733, in _post_inspect
-    self._check_configure()
-    ~~~~~~~~~~~~~~~~~~~~~^^
-  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 2410, in _check_configure
-    _configure_registries({self.registry}, cascade=True)
-    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 4227, in _configure_registries
-    _do_configure_registries(registries, cascade)
-    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 4264, in _do_configure_registries
-    raise e
-sqlalchemy.exc.InvalidRequestError: One or more mappers failed to initialize - can't proceed with initialization of other mappers. Triggering mapper: 'Mapper[Comment(comment)]'. Original exception was: Error creating backref 'comments' on relationship 'Comment.post': property of that name exists on mapper 'Mapper[Post(post)]'
-2026-02-24 00:21:14,930 INFO: Microblog startup [in C:\Users\sherv\Downloads\microblog\app\__init__.py:77]
-2026-02-24 00:21:17,798 INFO: Microblog startup [in C:\Users\sherv\Downloads\microblog\app\__init__.py:77]
-2026-02-24 00:21:21,649 INFO: Microblog startup [in C:\Users\sherv\Downloads\microblog\app\__init__.py:77]
-2026-02-24 00:26:26,835 INFO: Microblog startup [in C:\Users\sherv\Downloads\microblog\app\__init__.py:77]
+  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\flask_login\utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\sherv\Downloads\microblog\app\main\routes.py", line 72, in user
+    return render_template('user.html', user=user, posts=posts.items,
+                           next_url=next_url, prev_url=prev_url, form=form)
+  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\flask\templating.py", line 150, in render_template
+    return _render(app, template, context)
+  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\flask\templating.py", line 131, in _render
+    rv = template.render(context)
+  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\jinja2\environment.py", line 1295, in render
+    self.environment.handle_exception()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "C:\Users\sherv\Downloads\microblog\app\templates\user.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "C:\Users\sherv\Downloads\microblog\app\templates\base.html", line 89, in top-level template code
+    {% block content %}{% endblock %}
+    ^^^^^^^^^^^^^^^^^
+  File "C:\Users\sherv\Downloads\microblog\app\templates\user.html", line 42, in block 'content'
+    {% include '_post.html' %}
+    ^^^^^^^^^^^^^^^^^
+  File "C:\Users\sherv\Downloads\microblog\app\templates\_post.html", line 42, in top-level template code
+    {{ comment_form.hidden_tag() }}
+    ^^^^^^^^^
+  File "C:\Users\sherv\Downloads\microblog\venv\Lib\site-packages\jinja2\environment.py", line 490, in getattr
+    return getattr(obj, attribute)
+jinja2.exceptions.UndefinedError: 'comment_form' is undefined
+2026-02-24 00:47:42,820 INFO: Microblog startup [in C:\Users\sherv\Downloads\microblog\app\__init__.py:77]
+2026-02-24 00:53:22,033 INFO: Microblog startup [in C:\Users\sherv\Downloads\microblog\app\__init__.py:77]
+2026-02-24 00:58:22,879 INFO: Microblog startup [in C:\Users\sherv\Downloads\microblog\app\__init__.py:77]
+2026-02-24 01:07:08,680 INFO: Microblog startup [in C:\Users\sherv\Downloads\microblog\app\__init__.py:77]
+2026-02-24 01:07:53,329 INFO: Microblog startup [in C:\Users\sherv\Downloads\microblog\app\__init__.py:77]
+2026-02-24 01:09:22,048 INFO: Microblog startup [in C:\Users\sherv\Downloads\microblog\app\__init__.py:77]
+2026-02-24 01:11:46,281 INFO: Microblog startup [in C:\Users\sherv\Downloads\microblog\app\__init__.py:77]
+2026-02-24 01:20:57,198 INFO: Microblog startup [in C:\Users\sherv\Downloads\microblog\app\__init__.py:77]
+2026-02-24 01:21:33,012 INFO: Microblog startup [in C:\Users\sherv\Downloads\microblog\app\__init__.py:77]
+2026-02-24 01:21:53,125 INFO: Microblog startup [in C:\Users\sherv\Downloads\microblog\app\__init__.py:77]
+2026-02-24 01:22:48,885 INFO: Microblog startup [in C:\Users\sherv\Downloads\microblog\app\__init__.py:77]
+2026-02-24 01:23:41,688 INFO: Microblog startup [in C:\Users\sherv\Downloads\microblog\app\__init__.py:77]
+2026-02-24 01:26:50,153 INFO: Microblog startup [in C:\Users\sherv\Downloads\microblog\app\__init__.py:77]
+2026-02-24 01:30:03,781 INFO: Microblog startup [in C:\Users\sherv\Downloads\microblog\app\__init__.py:77]
+2026-02-24 01:31:03,464 INFO: Microblog startup [in C:\Users\sherv\Downloads\microblog\app\__init__.py:77]
+2026-02-24 01:35:10,013 INFO: Microblog startup [in C:\Users\sherv\Downloads\microblog\app\__init__.py:77]
+2026-02-24 01:36:25,595 INFO: Microblog startup [in C:\Users\sherv\Downloads\microblog\app\__init__.py:77]
+2026-02-24 01:37:58,132 INFO: Microblog startup [in C:\Users\sherv\Downloads\microblog\app\__init__.py:77]
+2026-02-24 01:38:18,212 INFO: Microblog startup [in C:\Users\sherv\Downloads\microblog\app\__init__.py:77]
+2026-02-24 01:38:44,382 INFO: Microblog startup [in C:\Users\sherv\Downloads\microblog\app\__init__.py:77]
+2026-02-24 01:39:33,991 INFO: Microblog startup [in C:\Users\sherv\Downloads\microblog\app\__init__.py:77]
+2026-02-24 01:43:11,141 INFO: Microblog startup [in C:\Users\sherv\Downloads\microblog\app\__init__.py:77]
+2026-02-24 01:43:19,190 INFO: Microblog startup [in C:\Users\sherv\Downloads\microblog\app\__init__.py:77]
+2026-02-24 01:43:33,788 INFO: Microblog startup [in C:\Users\sherv\Downloads\microblog\app\__init__.py:77]
+2026-02-24 01:43:49,063 INFO: Microblog startup [in C:\Users\sherv\Downloads\microblog\app\__init__.py:77]
+2026-02-24 01:44:05,626 INFO: Microblog startup [in C:\Users\sherv\Downloads\microblog\app\__init__.py:77]
+2026-02-25 20:35:03,803 INFO: Microblog startup [in C:\Users\sherv\Downloads\microblog\app\__init__.py:77]
+2026-02-25 20:55:07,716 INFO: Microblog startup [in C:\Users\sherv\Downloads\microblog\app\__init__.py:77]
+2026-02-25 21:07:43,926 INFO: Microblog startup [in C:\Users\sherv\Downloads\microblog\app\__init__.py:77]
