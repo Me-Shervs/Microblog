@@ -60,7 +60,6 @@ msgid "Please use a different username."
 msgstr "Mangyaring gumamit ng ibang username."
 
 #: app/auth/forms.py:34
-#, fuzzy
 msgid "Please use a different email address."
 msgstr "Mangyaring gumamit ng ibang email address."
 
@@ -118,7 +117,6 @@ msgid "Your changes have been saved."
 msgstr "Nai-save na ang iyong mga pagbabago."
 
 #: app/main/routes.py:84
-#, fuzzy
 msgid "Edit Profile"
 msgstr "I-edit ang iyong profile"
 
@@ -222,7 +220,6 @@ msgid "Click to Reset It"
 msgstr "I-click para i-reset ito"
 
 #: app/templates/auth/reset_password.html:4
-#, fuzzy
 msgid "Reset Your Password"
 msgstr "I-reset ang Iyong Password"
 

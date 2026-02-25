@@ -60,7 +60,6 @@ msgid "Please use a different username."
 msgstr "Por favor usa un nombre de usuario diferente."
 
 #: app/auth/forms.py:34
-#, fuzzy
 msgid "Please use a different email address."
 msgstr "Por favor usa un correo electrónico diferente."
 
@@ -83,7 +82,6 @@ msgstr ""
 "de contraseña"
 
 #: app/auth/routes.py:67 app/templates/auth/reset_password_request.html:6
-#, fuzzy
 msgid "Reset Password"
 msgstr "Repetir contraseña"
 
